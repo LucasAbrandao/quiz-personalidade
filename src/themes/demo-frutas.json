@@ -1,0 +1,26 @@
+{
+    "title": "Qual fruta você seria?",
+    "questions": [
+      {
+        "question": "Você prefere:",
+        "options": [
+          { "text": "Doce", "trait": "doce" },
+          { "text": "Ácido", "trait": "acido" }
+        ]
+      },
+      {
+        "question": "Você é mais:",
+        "options": [
+          { "text": "Energético", "trait": "energetico" },
+          { "text": "Tranquilo", "trait": "tranquilo" }
+        ]
+      }
+    ],
+    "results": {
+      "doce-energetico": "🍓 Você seria um Morango!",
+      "acido-tranquilo": "🍋 Você seria um Limão!",
+      "doce-tranquilo": "🍌 Você seria uma Banana!",
+      "acido-energetico": "🍊 Você seria uma Laranja!"
+    }
+  }
+  
