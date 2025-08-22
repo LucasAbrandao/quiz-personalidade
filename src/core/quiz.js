@@ -18,10 +18,10 @@ const demoQuiz = {
       }
     ],
     results: {
-      "doce-energetico": "🍓 Você seria um Morango!",
-      "acido-tranquilo": "🍋 Você seria um Limão!",
-      "doce-tranquilo": "🍌 Você seria uma Banana!",
-      "acido-energetico": "🍊 Você seria uma Laranja!"
+      "doce-energetico": "Você seria um Morango!",
+      "acido-tranquilo": "Você seria um Limão!",
+      "doce-tranquilo": "Você seria uma Banana!",
+      "acido-energetico": "Você seria uma Laranja!"
     }
   };
   
@@ -64,9 +64,30 @@ const demoQuiz = {
     container.innerHTML = "";
   
     const key = answers.join("-");
-    const result = demoQuiz.results[key] || "✨ Você é único como você mesmo!";
+    const result = demoQuiz.results[key] || "Você é único como você mesmo!";
     const h2 = document.createElement("h2");
     h2.textContent = result;
     container.appendChild(h2);
   }
   
+  export function createQuizEngine(quizData) {
+  let idx = 0; // índice da pergunta atual
+  const answers = [];
+
+  const getCurrentQuestion = () => quizData.questions[idx];
+
+  const answer = (trait) => {
+    answers.push(trait);
+    idx++;
+  };
+
+  const isFinished = () => idx >= quizData.questions.length;
+
+  const getResultKey = () => answers.join("-");
+
+  const getResultText = () => quizData.results[getResultKey()] || "✨ Você é único como você mesmo!";
+
+  const getProgress = () => ({ current: Math.min(idx + 1, quizData.questions.length), total: quizData.questions.length });
+
+  return { getCurrentQuestion, answer, isFinished, getResultKey, getResultText, getProgress };
+}
